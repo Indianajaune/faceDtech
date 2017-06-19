@@ -4,7 +4,7 @@
 #include "GfxLib.h" // Seul cet include est necessaire pour faire du graphique
 #include "BmpLib.h" // Cet include permet de manipuler des fichiers BMP
 #include "ESLib.h" // Pour utiliser valeurAleatoire()
-#include "LbpLib.h"
+#include "projet.h"
 
 // Largeur et hauteur par defaut d'une image correspondant a nos criteres
 #define LargeurFenetre 800
@@ -63,8 +63,8 @@ void gestionEvenement(EvenementGfx evenement)
     static char afficheTimer [50];
     static int timer = 0;
     static int comparaison = 0;
-    static char nom [50];
-	static unsigned int resultat;
+    static char txt[50];
+    static unsigned int resultat,resultat2;
     switch (evenement)
     {
         case Initialisation:
@@ -95,7 +95,7 @@ void gestionEvenement(EvenementGfx evenement)
                     //unsigned int analyse(short int mode, char path1[100], char path2[100])
                     printf("passe comparaison fonction");
                     
-					printf("resultat = %d\n",resultat);
+                    printf("resultat = %d\n",resultat);
                 }
                 
                 else 
@@ -130,31 +130,32 @@ void gestionEvenement(EvenementGfx evenement)
                 
                 couleurCourante(255,255,255);
                 
-                afficheChaine("Lancer le programme ",30,5*largeurFenetre()/20,10*hauteurFenetre()/20);
-                afficheChaine("Quitter le programme ",30,5* largeurFenetre()/20,5*hauteurFenetre()/20);
+                afficheChaine("Launch the software ",30,5*largeurFenetre()/20,10*hauteurFenetre()/20);
+                afficheChaine("Leave the software ",30,5* largeurFenetre()/20,5*hauteurFenetre()/20);
             }
             if (mode==1)
             {   
                 couleurCourante(175,175,175);
 
-                rectangle(4.5*largeurFenetre()/40, 38.5*hauteurFenetre()/50 ,21.5*largeurFenetre()/40,43*hauteurFenetre()/50);
-                rectangle(4.5*largeurFenetre()/40, 28.5*hauteurFenetre()/50 ,26.5*largeurFenetre()/40,33*hauteurFenetre()/50);
-                rectangle(4.5*largeurFenetre()/40, 18.5*hauteurFenetre()/50 ,23.5*largeurFenetre()/40,23*hauteurFenetre()/50);
-                rectangle(4.5*largeurFenetre()/40, 8.5*hauteurFenetre()/50 ,23.5*largeurFenetre()/40,13*hauteurFenetre()/50);
+                rectangle(4.5*largeurFenetre()/40, 38.5*hauteurFenetre()/50 ,28.5*largeurFenetre()/40,43*hauteurFenetre()/50);
+                rectangle(4.5*largeurFenetre()/40, 28.5*hauteurFenetre()/50 ,31.5*largeurFenetre()/40,33*hauteurFenetre()/50);
+                rectangle(4.5*largeurFenetre()/40, 18.5*hauteurFenetre()/50 ,28.5*largeurFenetre()/40,23*hauteurFenetre()/50);
+                rectangle(4.5*largeurFenetre()/40, 8.5*hauteurFenetre()/50 ,28.5*largeurFenetre()/40,13*hauteurFenetre()/50);
 
                 couleurCourante(0,0,0);
 
-                rectangle(4*largeurFenetre()/40, 39*hauteurFenetre()/50 ,21*largeurFenetre()/40,43*hauteurFenetre()/50);
-                rectangle(4*largeurFenetre()/40, 29*hauteurFenetre()/50 ,26*largeurFenetre()/40,33*hauteurFenetre()/50);
-                rectangle(4*largeurFenetre()/40, 19*hauteurFenetre()/50 ,23.5*largeurFenetre()/40,23*hauteurFenetre()/50);
-                rectangle(4*largeurFenetre()/40, 9*hauteurFenetre()/50 ,23.5*largeurFenetre()/40,13*hauteurFenetre()/50);
+                rectangle(4*largeurFenetre()/40, 39*hauteurFenetre()/50 ,28*largeurFenetre()/40,43*hauteurFenetre()/50);
+                rectangle(4*largeurFenetre()/40, 29*hauteurFenetre()/50 ,31*largeurFenetre()/40,33*hauteurFenetre()/50);
+                rectangle(4*largeurFenetre()/40, 19*hauteurFenetre()/50 ,28*largeurFenetre()/40,23*hauteurFenetre()/50);
+                rectangle(4*largeurFenetre()/40, 9*hauteurFenetre()/50 ,28*largeurFenetre()/40,13*hauteurFenetre()/50);
 
-                couleurCourante(255,0,255); 
+                couleurCourante(255,255,255); 
 
-                afficheChaine("Prendre une photo",30, 5* largeurFenetre()/40,40*hauteurFenetre()/50); // démarage au mode 50
-                afficheChaine("Lancer une  comparaison",30,5* largeurFenetre()/40,30*hauteurFenetre()/50); // démarage au mode 60
-                afficheChaine("Ajouter une personne",30,5* largeurFenetre()/40,20*hauteurFenetre()/50);
-                afficheChaine("Quitter le programme ",30,5* largeurFenetre()/40,10*hauteurFenetre()/50);
+                afficheChaine("Take a photo (WIP)",30, 5* largeurFenetre()/40,40*hauteurFenetre()/50); // démarage au mode 50
+                afficheChaine("Launch a comparison(demo)",30,5* largeurFenetre()/40,30*hauteurFenetre()/50); // démarage au mode 60
+                afficheChaine("Add a user (WIP)",30,5* largeurFenetre()/40,20*hauteurFenetre()/50);
+                afficheChaine("Leave the software ",30,5* largeurFenetre()/40,10*hauteurFenetre()/50);
+                
             }
             
             if(mode == 2 ) // mode d'affichage des résultats
@@ -165,7 +166,7 @@ void gestionEvenement(EvenementGfx evenement)
             if(mode == 50)
             {
                 couleurCourante(0,0,0);
-                afficheChaine("Appuyez pour lancer le compte a rebourt",20,hauteurFenetre()/2,largeurFenetre()/2);
+                afficheChaine("press to start countdown",20,hauteurFenetre()/2,largeurFenetre()/2);
             }
             if (mode == 51)
             {
@@ -185,16 +186,57 @@ void gestionEvenement(EvenementGfx evenement)
             if(mode == 60)
             {
                 // on prend la photo puis on recupère le nom de la personne / de la photo à recupéré
-                mode = 51;
+                
             }
             
             if(mode == 61)
             {
-                 // idéalement on récupere le nom de la photo à comparais. 
-                 //ecrisImage(0,0, image->largeurImage, image->hauteurImage, image->donneesRGB);  
-                 //printf("%lf %lf\n",(image->largeurImage)/2.,(image->hauteurImage)/2.);            
+                
+                // idéalement on récupere le nom de la photo à comparais. 
+                //ecrisImage(0,0, image->largeurImage, image->hauteurImage, image->donneesRGB);  
+                //printf("%lf %lf\n",(image->largeurImage)/2.,(image->hauteurImage)/2.);
+                couleurCourante(175,175,175);
+                rectangle(4.5*largeurFenetre()/40, 38.5*hauteurFenetre()/50 ,29.5*largeurFenetre()/40,43*hauteurFenetre()/50);
+                couleurCourante(0,0,0); 
+                rectangle(4*largeurFenetre()/40, 39*hauteurFenetre()/50 ,29*largeurFenetre()/40,43*hauteurFenetre()/50);
+                couleurCourante(175,175,175);
+                afficheChaine("successfully saved",30, 5* largeurFenetre()/40,40*hauteurFenetre()/50);
+
+                couleurCourante(175,175,175);
+                rectangle(4.5*largeurFenetre()/40, 18.5*hauteurFenetre()/50 ,29.5*largeurFenetre()/40,22.5*hauteurFenetre()/50);
+                couleurCourante(0,0,0); 
+                rectangle(4*largeurFenetre()/40, 19*hauteurFenetre()/50 ,29*largeurFenetre()/40,22.5*hauteurFenetre()/50);
+                couleurCourante(175,175,175);
+                afficheChaine("next step?",30, 5* largeurFenetre()/40,20*hauteurFenetre()/50);
+                
             }
-            
+            if (mode == 62)
+            {
+                couleurCourante(175,175,175);
+                rectangle(4.5*largeurFenetre()/40, 38.5*hauteurFenetre()/50 ,29.5*largeurFenetre()/40,43*hauteurFenetre()/50);
+                couleurCourante(0,0,0); 
+                rectangle(4*largeurFenetre()/40, 39*hauteurFenetre()/50 ,29*largeurFenetre()/40,43*hauteurFenetre()/50);
+                couleurCourante(175,175,175);
+                afficheChaine("analysis successful!",30, 5* largeurFenetre()/40,40*hauteurFenetre()/50);
+
+                couleurCourante(175,175,175);
+                rectangle(4.5*largeurFenetre()/40, 18.5*hauteurFenetre()/50 ,29.5*largeurFenetre()/40,23*hauteurFenetre()/50);
+                couleurCourante(0,0,0); 
+                rectangle(4*largeurFenetre()/40, 19*hauteurFenetre()/50 ,29*largeurFenetre()/40,23*hauteurFenetre()/50);
+                couleurCourante(175,175,175);
+                afficheChaine("analysis 1:",30, 5* largeurFenetre()/40,20*hauteurFenetre()/50);
+                sprintf(txt,"%d",resultat);
+                afficheChaine(txt,30,20*largeurFenetre()/40,20*hauteurFenetre()/50);
+
+                couleurCourante(175,175,175);
+                rectangle(4.5*largeurFenetre()/40, 8.5*hauteurFenetre()/50 ,29.5*largeurFenetre()/40,13*hauteurFenetre()/50);
+                couleurCourante(0,0,0); 
+                rectangle(4*largeurFenetre()/40, 9*hauteurFenetre()/50 ,29*largeurFenetre()/40,13*hauteurFenetre()/50);
+                couleurCourante(175,175,175);
+                afficheChaine("analysis 2:",30, 5* largeurFenetre()/40,10*hauteurFenetre()/50);
+                sprintf(txt,"%d",resultat2);
+                afficheChaine(txt,30,20*largeurFenetre()/40,10*hauteurFenetre()/50);
+            }
             break;
             
         case Clavier:
@@ -290,8 +332,9 @@ void gestionEvenement(EvenementGfx evenement)
                         {   
                             mode=50;
                             comparaison = 1;
-                            printf("On appuie sur comparaison \n");
-                            resultat = analyse (1, "juliencouleur1.bmp","julienpascoulr.bmp");
+                            resultat = analyse (1, "juliencouleur1.bmp","julienpascouleur.bmp");
+                            resultat = analyse (1, "juliencouleur2.bmp","julienpascouleur2.bmp");
+                            resultat = analyse (1, "aureliencouleur1.bmp","aurelienpascouleur.bmp");
                         }                   
                     }
 
@@ -332,6 +375,18 @@ void gestionEvenement(EvenementGfx evenement)
                         }                   
                     }
                 }
+                if (mode == 61)
+                {
+                    if((abscisseSouris()>=4.5*largeurFenetre()/40) && (ordonneeSouris()>=18.5*hauteurFenetre()/50) && (abscisseSouris()<= 29.5*largeurFenetre()/40) && (ordonneeSouris()<=23*hauteurFenetre()/50))
+                    {
+                        mode = 62;
+                        resultat = analyse(2,"julienpascouleur.bmp","julienpascouleur2.bmp");
+                        printf("res 1 : %d\n",resultat);
+                        resultat2 = analyse(2,"julienpascouleur.bmp","aurelienpascouleur.bmp");
+                        printf("res 2 : %d\n",resultat2);
+                    }
+                }
+                
             }
             break;
         
