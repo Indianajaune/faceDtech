@@ -5,7 +5,7 @@
 #include <sys/wait.h>
 #include "LbpLib.h"
 
-
+//an upgraded version can be seen here : http://collabedit.com/8bu4e
 
 
 //fonction de decoupage en trois tableau Rouge, vert et bleu d'une image se trouvant a l'adresse indiquee
